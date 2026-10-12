@@ -1,0 +1,44 @@
+{
+    "N_hap_true": 4000,
+    "tau_a_true": 10.0,
+    "m_true": 0.5,
+    "rep": [
+        1
+    ],
+    "ibd_label": 0.0035686933476118,
+    "gamma": 10000,
+    "beta": 0.001,
+    "N_hap_bound": [
+        0,
+        100000
+    ],
+    "tau_a_bound": [
+        0,
+        500
+    ],
+    "m_bound": [
+        0,
+        0.5
+    ],
+    "init_par": [
+        10000,
+        100,
+        0.25
+    ],
+    "fix": [
+        0,
+        0,
+        1
+    ],
+    "fix_name": [
+        "N_hap",
+        "tau_a",
+        "m"
+    ],
+    "fix_val": [
+        null,
+        null,
+        0.480411840425532
+    ],
+    "data_path": "examples/input.IBDlength_cM.txt"
+}
