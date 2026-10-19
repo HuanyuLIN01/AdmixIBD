@@ -99,7 +99,3 @@ The `KGP/` directory provides supplementary population-level material, including
 ## Citation
 
 A manuscript describing AdmixIBD is in preparation. Citation details will be added when available.
-
-## License
-
-No software license has been specified for this repository. Please contact the authors regarding reuse or redistribution.
