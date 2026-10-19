@@ -92,9 +92,9 @@ The program writes a JSON file containing parameter estimates and optimization d
 
 Some result keys retain the spelling `aproximated` to remain consistent with the current implementation.
 
-## KGP data
+### Real-data Application
 
-The `KGP/` directory provides supplementary population-level material, including a table of IBD-sharing values and admixture ratios, an Excel workbook, and an archive of IBD files. These files are **not automatically loaded** by the quick-start command.
+The `KGP/` directory contains the data and results from the real-data analysis presented in the manuscript. The input files include population admixture proportions, IBD-sharing statistics, and IBD segment lengths. The corresponding analysis results are also provided in this directory.
 
 ## Citation
 
