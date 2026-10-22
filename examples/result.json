@@ -1,8 +1,5 @@
 {
     "round0": {
-        "N_hap_true": 4000,
-        "tau_a_true": 10.0,
-        "m_true": 0.5,
         "rep": [
             1
         ],
@@ -42,75 +39,69 @@
             0.480411840425532
         ],
         "data_path": "examples/input.IBDlength_cM.txt",
-        "opt N_hap aproximated": 17224.868001117164,
-        "opt tau_a aproximated": 23.510731377542516,
+        "opt N_hap aproximated": 10000.0,
+        "opt tau_a aproximated": 100.0,
+        "opt m aproximated": 0.480411840425532,
+        "opt loss": -355.9606120568854,
+        "loss1": -356218.67919880094,
+        "loss2": 2.5806714191552344e-05,
+        "ibd aproximated": 0.008648724271883063
+    },
+    "round t1": {
+        "rep": [
+            1
+        ],
+        "ibd_label": 0.0035686933476118,
+        "gamma": 10000,
+        "beta": 0.001,
+        "N_hap_bound": [
+            0,
+            100000
+        ],
+        "tau_a_bound": [
+            0,
+            500
+        ],
+        "m_bound": [
+            0,
+            0.5
+        ],
+        "init_par": [
+            17224.86756406702,
+            23.51073517781152,
+            0.480411840425532
+        ],
+        "fix": [
+            1,
+            0,
+            1
+        ],
+        "fix_name": [
+            "N_hap",
+            "tau_a",
+            "m"
+        ],
+        "fix_val": [
+            17224.86756406702,
+            23.51073517781152,
+            0.480411840425532
+        ],
+        "data_path": "examples/input.IBDlength_cM.txt",
+        "opt N_hap aproximated": 17224.86756406702,
+        "opt tau_a aproximated": 23.51073517781152,
         "opt m aproximated": 0.480411840425532,
         "opt loss": -358.76834632773466,
         "loss1": -358768.34632773465,
-        "loss2": 1.4778830416242116e-19,
-        "ibd aproximated": 0.0035686929631793558
-    },
-    "round t1": {
-        "N_hap_true": 4000,
-        "tau_a_true": 10.0,
-        "m_true": 0.5,
-        "rep": [
-            1
-        ],
-        "ibd_label": 0.0035686933476118,
-        "gamma": 0,
-        "beta": 1,
-        "N_hap_bound": [
-            0,
-            100000
-        ],
-        "tau_a_bound": [
-            0,
-            500
-        ],
-        "m_bound": [
-            0,
-            0.5
-        ],
-        "init_par": [
-            4000,
-            23.510731377542516,
-            0.480411840425532
-        ],
-        "fix": [
-            1,
-            0,
-            1
-        ],
-        "fix_name": [
-            "N_hap",
-            "tau_a",
-            "m"
-        ],
-        "fix_val": [
-            4000,
-            23.510731377542516,
-            0.480411840425532
-        ],
-        "data_path": "examples/input.IBDlength_cM.txt",
-        "opt N_hap aproximated": 4000,
-        "opt tau_a aproximated": 23.510731377542516,
-        "opt m aproximated": 0.480411840425532,
-        "opt loss": -358768.34632773465,
-        "loss1": -358768.34632773465,
-        "loss2": 0.00013921340310753488,
-        "ibd aproximated": 0.015367566306820018
+        "loss2": 3.7131327481736976e-20,
+        "ibd aproximated": 0.003568693154916892
     },
     "round mn1": {
-        "N_hap_true": 4000,
-        "tau_a_true": 10.0,
-        "m_true": 0.5,
         "rep": [
             1
         ],
         "ibd_label": 0.0035686933476118,
-        "gamma": 1,
-        "beta": 0,
+        "gamma": 10000,
+        "beta": 0.001,
         "N_hap_bound": [
             0,
             100000
@@ -124,8 +115,8 @@
             0.5
         ],
         "init_par": [
-            4000,
-            23.510731377542516,
+            17224.86756406702,
+            23.51073517781152,
             0.480411840425532
         ],
         "fix": [
@@ -139,17 +130,118 @@
             "m"
         ],
         "fix_val": [
-            4000,
-            23.510731377542516,
+            17224.86756406702,
+            23.51073517781152,
             0.480411840425532
         ],
         "data_path": "examples/input.IBDlength_cM.txt",
-        "opt N_hap aproximated": 17224.86614564844,
-        "opt tau_a aproximated": 23.510731377542516,
+        "opt N_hap aproximated": 17224.86756406702,
+        "opt tau_a aproximated": 23.51073517781152,
         "opt m aproximated": 0.480411840425532,
-        "opt loss": 1.3376854144950727e-28,
+        "opt loss": -358.76834632773466,
         "loss1": -358768.34632773465,
-        "loss2": 1.3376854144950727e-28,
-        "ibd aproximated": 0.003568693347600234
-    }
+        "loss2": 3.7131327481736976e-20,
+        "ibd aproximated": 0.003568693154916892
+    },
+    "iterations": [
+        {
+            "iteration": 1,
+            "after_tau_update": {
+                "opt N_hap aproximated": 10000.0,
+                "opt tau_a aproximated": 23.198662659832138,
+                "opt m aproximated": 0.480411840425532,
+                "opt loss": -358.7022387837321,
+                "loss1": -358767.98006163404,
+                "loss2": 6.574127790192718e-06,
+                "ibd aproximated": 0.006132699546939859
+            },
+            "after_N_m_update": {
+                "opt N_hap aproximated": 17184.719972700124,
+                "opt tau_a aproximated": 23.198662659832138,
+                "opt m aproximated": 0.480411840425532,
+                "opt loss": -358.76798006163403,
+                "loss1": -358767.98006163404,
+                "loss2": 4.831916024154e-22,
+                "ibd aproximated": 0.0035686933256301803
+            },
+            "max_relative_change": 0.7680133734016786
+        },
+        {
+            "iteration": 2,
+            "after_tau_update": {
+                "opt N_hap aproximated": 17184.719972700124,
+                "opt tau_a aproximated": 23.510137196096,
+                "opt m aproximated": 0.480411840425532,
+                "opt loss": -358.76834563399535,
+                "loss1": -358768.346326413,
+                "loss2": 6.924176156444391e-11,
+                "ibd aproximated": 0.003577014511086005
+            },
+            "after_N_m_update": {
+                "opt N_hap aproximated": 17224.78981148448,
+                "opt tau_a aproximated": 23.510137196096,
+                "opt m aproximated": 0.480411840425532,
+                "opt loss": -358.768346326413,
+                "loss1": -358768.346326413,
+                "loss2": 3.572852787753869e-23,
+                "ibd aproximated": 0.0035686933416344655
+            },
+            "max_relative_change": 0.013426400514162915
+        },
+        {
+            "iteration": 3,
+            "after_tau_update": {
+                "opt N_hap aproximated": 17224.78981148448,
+                "opt tau_a aproximated": 23.51073517781152,
+                "opt m aproximated": 0.480411840425532,
+                "opt loss": -358.7683463277321,
+                "loss1": -358768.34632773465,
+                "loss2": 2.5333056044583767e-16,
+                "ibd aproximated": 0.003568709263973207
+            },
+            "after_N_m_update": {
+                "opt N_hap aproximated": 17224.86756406702,
+                "opt tau_a aproximated": 23.51073517781152,
+                "opt m aproximated": 0.480411840425532,
+                "opt loss": -358.76834632773466,
+                "loss1": -358768.34632773465,
+                "loss2": 3.7131327481736976e-20,
+                "ibd aproximated": 0.003568693154916892
+            },
+            "max_relative_change": 2.5435058525218325e-05
+        },
+        {
+            "iteration": 4,
+            "after_tau_update": {
+                "opt N_hap aproximated": 17224.86756406702,
+                "opt tau_a aproximated": 23.51073517781152,
+                "opt m aproximated": 0.480411840425532,
+                "opt loss": -358.76834632773466,
+                "loss1": -358768.34632773465,
+                "loss2": 3.7131327481736976e-20,
+                "ibd aproximated": 0.003568693154916892
+            },
+            "after_N_m_update": {
+                "opt N_hap aproximated": 17224.86756406702,
+                "opt tau_a aproximated": 23.51073517781152,
+                "opt m aproximated": 0.480411840425532,
+                "opt loss": -358.76834632773466,
+                "loss1": -358768.34632773465,
+                "loss2": 3.7131327481736976e-20,
+                "ibd aproximated": 0.003568693154916892
+            },
+            "max_relative_change": 0.0
+        }
+    ],
+    "final": {
+        "opt N_hap aproximated": 17224.86756406702,
+        "opt tau_a aproximated": 23.51073517781152,
+        "opt m aproximated": 0.480411840425532,
+        "opt loss": -358.76834632773466,
+        "loss1": -358768.34632773465,
+        "loss2": 3.7131327481736976e-20,
+        "ibd aproximated": 0.003568693154916892
+    },
+    "n_iterations": 4,
+    "converged": true
 }

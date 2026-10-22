@@ -1,0 +1,9 @@
+AdmixIBD Final Results
+======================
+N_hap             : 17224.867564
+tau_a (generations): 23.510735
+m                 : 0.480412
+IBD sharing       : 0.0035686932
+Loss              : -358.76834633
+Iterations        : 4
+Converged         : True
