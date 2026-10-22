@@ -2,100 +2,98 @@
 
 **Reference-free inference of population admixture history from identity-by-descent (IBD) segments**
 
-![AdmixIBD conceptual illustration](docs/AdmixIBD_schematic.png)
+AdmixIBD is a reference-free statistical framework for inferring population admixture history from identity-by-descent (IBD) segments. Based on the coalescent process under the Hybrid Isolation (HI) model, AdmixIBD exploits the effects of population divergence and admixture on genome-wide IBD patterns to infer demographic parameters without requiring predefined ancestral reference populations.
 
-*Conceptual illustration of divergence, admixture, and ancestry-related IBD patterns.*
-
-## Overview
-
-AdmixIBD is a research-stage computational method for inferring aspects of population admixture history from identity-by-descent (IBD) segments, without requiring predefined ancestral reference populations.
-
-The provided implementation combines information from the distribution of IBD segment lengths with an IBD-sharing constraint. It estimates parameters under the model implemented in `AdmixIBD.py` using numerical optimization. The current release contains the main Python script, example input parameters and IBD segment lengths, an example result, and supplementary population-level data derived from the 1000 Genomes Project (KGP).
-
-> **Research software notice:** This repository contains a research implementation. Review the model assumptions, parameter settings, and units carefully before applying it to new datasets.
-
-## Repository structure
-
-```text
-AdmixIBD/
-├── AdmixIBD.py
-├── README.md
-├── requirements.txt
-├── docs/
-│   └── AdmixIBD_schematic.png
-├── examples/
-│   ├── input_par.json
-│   ├── input.IBDlength_cM.txt
-│   └── result.json
-└── KGP/
-    ├── IBDFiles.zip
-    ├── AdmixtureSignals.xlsx
-    └── IBD_sharing_values_AdmixRatio.csv
-```
+The framework integrates two complementary summaries of IBD: the **IBD-sharing ratio**, which primarily informs effective population size and admixture proportion, and the **conditional length distribution of detectable IBD segments**, which is particularly informative about admixture time. Through an alternating inference procedure, AdmixIBD iteratively estimates these demographic parameters using IBD segments detected within the target admixed population.
 
 ## Installation
 
-Python 3 is required. Install the dependencies in a Python environment:
+AdmixIBD requires Python 3 and the following packages:
+
+- `numpy`
+- `scipy`
+- `nlopt`
+
+Clone the repository and install the dependencies:
 
 ```bash
+git clone https://github.com/HuanyuLIN01/AdmixIBD.git
+cd AdmixIBD
 python -m pip install -r requirements.txt
 ```
 
-The required packages are `numpy`, `scipy`, and `nlopt`.
 
-## Quick start
 
-From the **repository root**, run:
+## Quick Start
+
+An example dataset and configuration file are provided in the `examples/` directory.
+
+Run AdmixIBD from the repository root:
 
 ```bash
 python AdmixIBD.py \
-  --par-path examples/input_par.json \
-  --result-path examples/new_result.json
+    --par-path examples/input_par.json \
+    --result-path examples/new_result.json
 ```
 
-The command reads model settings from `examples/input_par.json`, loads the IBD length data specified by `data_path`, and writes its output to `examples/new_result.json`.
+The program reads the model configuration, loads the specified IBD segment lengths, performs parameter estimation, and saves the results to `examples/new_result.json`.
 
-**Important:** In `examples/input_par.json`, ensure that the `data_path` field points to the example input using a path relative to the repository root:
+## Input
 
-```json
-"data_path": "examples/input.IBDlength_cM.txt"
-```
+AdmixIBD requires two types of input: **IBD segment lengths** and **model configuration parameters**.
 
-The script currently resolves this path relative to the working directory, not relative to the JSON configuration file.
+### 1. IBD Segment Lengths
 
-## Input files
+The input file `examples/input.IBDlength_cM.txt` contains one IBD segment length per line, measured in centimorgans (cM).
 
-### IBD segment lengths
+### 2. Model Configuration
 
-`examples/input.IBDlength_cM.txt` contains **one IBD segment length per line**, in centimorgans (cM). The implementation converts the lengths to Morgans by multiplying by `0.01`.
+The file `examples/input_par.json` specifies the input data path and parameters used for inference.
 
-### Model configuration
 
-`examples/input_par.json` contains the optimization settings, including:
+| Parameter       | Description                                                       |
+| --------------- | ----------------------------------------------------------------- |
+| `data_path`     | Path to the IBD segment length file                               |
+| `ibd_label`     | Observed IBD-sharing ratio                                        |
+| `N_hap_bound`   | Bounds for the effective population size parameter                |
+| `tau_a_bound`   | Bounds for the admixture time parameter                           |
+| `m_bound`       | Bounds for the admixture proportion parameter                     |
+| `init_par`      | Initial parameter values, ordered as `N_hap`, `tau_a`, and `m`    |
+| `fix`           | Whether each parameter is estimated (`0`) or fixed (`1`)          |
+| `fix_val`       | Values assigned to fixed parameters                               |
+| `gamma`, `beta` | Weights for the IBD-sharing and segment-length distribution terms |
+| `rep`           | Replicate setting; use `[1]` for the supplied example             |
 
-| Field | Description |
-| --- | --- |
-| `data_path` | Path to the IBD segment-length input file |
-| `ibd_label` | Observed IBD-sharing value used by the objective |
-| `N_hap_bound`, `tau_a_bound`, `m_bound` | Bounds for model parameters |
-| `init_par` | Initial parameter values in the order `N_hap`, `tau_a`, `m` |
-| `fix` | Whether each parameter is free (`0`) or fixed (`1`) |
-| `fix_val` | Values of fixed parameters |
-| `gamma`, `beta` | Weights of the IBD-sharing and length-distribution terms |
-| `rep` | Replicate setting; use `[1]` for the supplied example |
 
-The objective combines a negative log-likelihood term for IBD segment lengths with a squared-error term for IBD sharing. For precise definitions of the parameters and mathematical assumptions, consult the research manuscript and source code.
+
 
 ## Output
 
-The program writes a JSON file containing parameter estimates and optimization diagnostics for sequential rounds, including `round0`, `round t1`, and `round mn1`. The supplied `examples/result.json` illustrates the output format.
+AdmixIBD writes the inference results to a JSON file at the path specified by `--result-path`.
 
-Some result keys retain the spelling `aproximated` to remain consistent with the current implementation.
+The output includes estimated demographic parameters and optimization diagnostics from successive inference rounds.
 
-### Real-data Application
+An example output is provided at:
 
-The `KGP/` directory contains the data and results from the real-data analysis presented in the manuscript. The input files include population admixture proportions, IBD-sharing statistics, and IBD segment lengths. The corresponding analysis results are also provided in this directory.
+```text
+examples/result.json
+```
+
+Some output field names retain their original spelling (e.g., `aproximated`) for consistency with the current implementation.
+
+## Application to the 1000 Genomes Project
+
+The `KGP/` directory contains supplementary input data and inference results from the real-data applications presented in the manuscript.
+
+These include:
+
+- **IBD segment lengths:** IBD data used for demographic inference.
+- **IBD-sharing statistics:** Population-level IBD-sharing measurements.
+- **Admixture proportions:** Population-level admixture estimates used in the analyses.
+- **Inference results:** Results of applying AdmixIBD to the analyzed populations.
+
+These materials are provided to support the interpretation and reproducibility of the real-data analyses.
 
 ## Citation
 
-A manuscript describing AdmixIBD is in preparation. Citation details will be added when available.
+A manuscript describing AdmixIBD is currently in preparation. Citation information will be updated upon publication.
