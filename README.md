@@ -4,8 +4,6 @@
 
 ![AdmixIBD conceptual illustration](docs/AdmixIBD_schematic.png)
 
-## Overview
-
 AdmixIBD is a reference-free statistical framework for inferring population admixture history from identity-by-descent (IBD) segments. Based on the coalescent process under the Hybrid Isolation (HI) model, AdmixIBD exploits the effects of population divergence and admixture on genome-wide IBD patterns to infer demographic parameters without requiring predefined ancestral reference populations.
 
 The framework integrates two complementary IBD summaries: the **IBD-sharing ratio**, which provides information about effective population size and admixture proportion, and the **conditional length distribution of detectable IBD segments**, which is particularly informative about admixture time. AdmixIBD uses alternating optimization to update admixture time and the remaining free demographic parameters from IBD segments detected within the target admixed population.
